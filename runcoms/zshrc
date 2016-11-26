@@ -79,5 +79,4 @@ export CLICOLOR=1
 export LSCOLORS=ExFxBxDxCxegedabagacad
 
 # and ensure that the same color scheme is used for tab expansion listings
-export LS_COLORS="no=00:fi=00:di=01;94:ln=01;36:\ pi=40;33:so=01;35:bd=40;33;01:cd=40;33;01:\ ex=01;32:lc=\e[:rm=m:tc=00:sp=00:ma=07:hi=00:du=00"
-zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
+zstyle ':completion:*:default' list-colors ${(s.:.)LSCOLORS}
