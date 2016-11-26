@@ -38,12 +38,6 @@ alias brew_fresh='brew update && brew upgrade --all; brew cleanup; brew cask cle
 alias set-iag-web-proxy='source ${HOME}/bin/set-iag-web-proxy.sh'
 alias unset-iag-web-proxy='source ${HOME}/bin/unset-iag-web-proxy.sh'
 
-# add the path to the rbenv executable to the PATH
-export PATH="$HOME/.rbenv/bin:$PATH"
-
-# Load rbenv automatically
-eval "$(rbenv init -)"
-
 # and change the color used to display directories to a more visible blue
 #
 #   Note that the LSCOLORS value shown below is encoded using a scheme where

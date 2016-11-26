@@ -84,6 +84,3 @@ cover-small () {
 
 # add ${HOME}/bin to default path
 export PATH=${HOME}/bin:${PATH}
-
-# setup the environment for launchctl to include the GOPATH
-launchctl setenv GOPATH /Users/tjmcs/src/go
