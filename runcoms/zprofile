@@ -61,3 +61,29 @@ export LESS='-F -g -i -M -R -S -w -X -z-4'
 if (( $#commands[(i)lesspipe(|.sh)] )); then
   export LESSOPEN="| /usr/bin/env $commands[(i)lesspipe(|.sh)] %s 2>&-"
 fi
+
+#
+# Temporary Files
+#
+
+if [[ ! -d "$TMPDIR" ]]; then
+  export TMPDIR="/tmp/$LOGNAME"
+  mkdir -p -m 700 "$TMPDIR"
+fi
+
+TMPPREFIX="${TMPDIR%/}/zsh"
+
+#
+# Define a function for generating go coverage statistics for a package
+# (on the command line)
+#
+cover-small () { 
+    t="/tmp/go-cover.$$.tmp"
+    go test -tags=small -coverprofile=$t $@ && go tool cover -func=$t && unlink $t
+}
+
+# add ${HOME}/bin to default path
+export PATH=${HOME}/bin:${PATH}
+
+# setup the environment for launchctl to include the GOPATH
+launchctl setenv GOPATH /Users/tjmcs/src/go
