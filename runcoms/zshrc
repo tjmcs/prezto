@@ -11,3 +11,79 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
 fi
 
 # Customize to your needs...
+#export GOBIN=/usr/local/go/bin
+export GOPATH=${HOME}/src/go
+export SNAP_PATH=${HOME}/src/go/src/github.com/intelsdi-x/snap/build
+export PATH="${HOME}/bin:${GOPATH}/bin:/usr/local/bin:/usr/local/go/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin"
+
+# add Anaconda binaries to the default path
+export ANACONDA_PATH=${HOME}/miniconda3
+export PATH=${PATH}:${ANACONDA_PATH}/bin
+
+# ack alias
+type -p ack > /dev/null && alias ack="ack --pager='less -R'"
+
+# alias for 'dirs -v'
+alias dh='dirs -v'
+
+# alias python to run python3
+#alias python=python3
+#alias pip=pip3
+
+# brew package update
+alias brew_fresh='brew update && brew upgrade --all; brew cleanup; brew cask cleanup; brew doctor'
+
+# setup aliases to manage process of setting and unsetting
+# the https_proxy environment variable
+alias set-iag-web-proxy='source ${HOME}/bin/set-iag-web-proxy.sh'
+alias unset-iag-web-proxy='source ${HOME}/bin/unset-iag-web-proxy.sh'
+
+# add the path to the rbenv executable to the PATH
+export PATH="$HOME/.rbenv/bin:$PATH"
+
+# Load rbenv automatically
+eval "$(rbenv init -)"
+
+# and change the color used to display directories to a more visible blue
+#
+#   Note that the LSCOLORS value shown below is encoded using a scheme where
+#   the first letter is the foreground, the second the background, the values
+#   are taken from this list of ANSI color codes:
+#
+#     a black
+#     b red
+#     c green
+#     d brown
+#     e blue
+#     f magenta
+#     g cyan
+#     h light grey
+#     A bold black, usually shows up as dark grey
+#     B bold red
+#     C bold green
+#     D bold brown, usually shows up as yellow
+#     E bold blue
+#     F bold magenta
+#     G bold cyan
+#     H bold light grey; looks like bright white
+#     x default foreground or background
+#
+# and the order of attributes is as follows:
+#
+#     1. directory
+#     2. symbolic link
+#     3. socket
+#     4. pipe
+#     5. executable
+#     6. block special
+#     7. character special
+#     8. executable with setuid bit set
+#     9. executable with setgid bit set
+#     10. directory writable to others, with sticky bit
+#     11. directory writable to others, without sticky bit
+export CLICOLOR=1
+export LSCOLORS=ExFxBxDxCxegedabagacad
+
+# and ensure that the same color scheme is used for tab expansion listings
+export LS_COLORS="no=00:fi=00:di=01;94:ln=01;36:\ pi=40;33:so=01;35:bd=40;33;01:cd=40;33;01:\ ex=01;32:lc=\e[:rm=m:tc=00:sp=00:ma=07:hi=00:du=00"
+zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
