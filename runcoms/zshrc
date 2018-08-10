@@ -13,12 +13,12 @@ fi
 # Customize to your needs...
 #export GOBIN=/usr/local/go/bin
 export GOPATH=${HOME}/src/go
-export SNAP_PATH=${HOME}/src/go/src/github.com/intelsdi-x/snap/build
-export PATH="${HOME}/bin:${GOPATH}/bin:/usr/local/bin:/usr/local/go/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin"
-
-# add Anaconda binaries to the default path
+export PYENV_ROOT=${HOME}/.pyenv
+export RBENV_ROOT=${HOME}/.rbenv
 export ANACONDA_PATH=${HOME}/miniconda3
-export PATH=${PATH}:${ANACONDA_PATH}/bin
+export CARGO_HOME=${HOME}/.cargo
+export SNAP_PATH=${HOME}/src/go/src/github.com/intelsdi-x/snap/build
+export PATH="${HOME}/bin:${GOPATH}/bin:${PYENV_ROOT}/bin:${RBENV_ROOT}/bin:${ANACONDA_PATH}/bin:${CARGO_HOME}/bin:/usr/local/bin:/usr/local/go/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin"
 
 # ack alias
 type -p ack > /dev/null && alias ack="ack --pager='less -R'"
@@ -26,17 +26,31 @@ type -p ack > /dev/null && alias ack="ack --pager='less -R'"
 # alias for 'dirs -v'
 alias dh='dirs -v'
 
+# alias to open files from the command-line
+alias open='xdg-open'
+
+# alias to restart cinnamon
+alias restart-cinnamon="${HOME}/bin/restart-cinnamon.sh"
+
+# initialize rbenv and pyenv (if the corresponding commands exist
+if command -v rbenv 1>/dev/null 2>&1; then
+    eval "$(rbenv init -)"
+fi
+if command -v pyenv 1>/dev/null 2>&1; then
+    eval "$(pyenv init -)"
+fi
+
 # alias python to run python3
 #alias python=python3
 #alias pip=pip3
 
 # brew package update
-alias brew_fresh='brew update && brew upgrade --all; brew cleanup; brew cask cleanup; brew doctor'
+#alias brew_fresh='brew update && brew upgrade --all; brew cleanup; brew cask cleanup; brew doctor'
 
 # setup aliases to manage process of setting and unsetting
 # the https_proxy environment variable
-alias set-iag-web-proxy='source ${HOME}/bin/set-iag-web-proxy.sh'
-alias unset-iag-web-proxy='source ${HOME}/bin/unset-iag-web-proxy.sh'
+#alias set-iag-web-proxy='source ${HOME}/bin/set-iag-web-proxy.sh'
+#alias unset-iag-web-proxy='source ${HOME}/bin/unset-iag-web-proxy.sh'
 
 # and change the color used to display directories to a more visible blue
 #
