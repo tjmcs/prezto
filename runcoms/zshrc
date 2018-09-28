@@ -20,6 +20,9 @@ export CARGO_HOME=${HOME}/.cargo
 export SNAP_PATH=${HOME}/src/go/src/github.com/intelsdi-x/snap/build
 export PATH="${HOME}/bin:${GOPATH}/bin:${PYENV_ROOT}/bin:${RBENV_ROOT}/bin:${ANACONDA_PATH}/bin:${CARGO_HOME}/bin:/usr/local/bin:/usr/local/go/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin"
 
+# set the default editor to vi rather than nano
+export EDITOR=vi
+
 # ack alias
 type -p ack > /dev/null && alias ack="ack --pager='less -R'"
 
@@ -94,3 +97,11 @@ export LSCOLORS=ExFxBxDxCxegedabagacad
 
 # and ensure that the same color scheme is used for tab expansion listings
 zstyle ':completion:*:default' list-colors ${(s.:.)LSCOLORS}
+
+# if the kubectl command exists
+if command -v kubectl 1>/dev/null 2>&1; then
+    # then setup Kubernetes config file variable
+    KUBECONFIG=/home/tjmcs/.kube/config
+    # setup autocompletion for the kubectl command
+    source <(kubectl completion zsh)
+fi
