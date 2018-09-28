@@ -92,11 +92,14 @@ if [[ ${XDG_SESSION_TYPE+x} ]]; then
     # first, determine the device ID of the mouse
     device_num="$(xinput list | grep -i mouse | awk 'match($0, /id=([0-9]+)/) { print substr($0, RSTART, RLENGTH) }' | cut -d'=' -f2)"
 
-    # then determine the property ID used to enable natural
-    # scrolling for that device
-    property_num="$(xinput list-props $device_num | grep 'Natural Scrolling Enabled (' | awk 'match($0, /[0-9]+/) { print substr($0, RSTART, RLENGTH) }')"
+    # if we found a mouse...
+    if [[ $device_num -ne '' ]]; then
+        # then determine the property ID used to enable natural
+        # scrolling for that device
+        property_num="$(xinput list-props $device_num | grep 'Natural Scrolling Enabled (' | awk 'match($0, /[0-9]+/) { print substr($0, RSTART, RLENGTH) }')"
 
-    # and finally, ensure that property is set to '1' for
-    # that device
-    xinput set-prop $device_num $property_num 1
+        # and finally, ensure that property is set to '1' for
+        # that device
+        xinput set-prop $device_num $property_num 1
+    fi
 fi
