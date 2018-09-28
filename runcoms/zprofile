@@ -90,9 +90,9 @@ export PATH=${HOME}/bin:${PATH}
 # by itself.
 if [[ ${XDG_SESSION_TYPE+x} ]]; then
     # first, determine the device ID of the mouse
-    device_num="$(xinput list | grep -i mouse | awk 'match($0, /id=([0-9]+)/) { print substr($0, RSTART, RLENGTH) }' | cut -d'=' -f2)"
+    device_num="$(xinput list | grep -i mouse | grep -iv vmware | awk 'match($0, /id=([0-9]+)/) { print substr($0, RSTART, RLENGTH) }' | cut -d'=' -f2)"
 
-    # if we found a mouse...
+    # if we found a (physical) mouse...
     if [[ $device_num -ne '' ]]; then
         # then determine the property ID used to enable natural
         # scrolling for that device
