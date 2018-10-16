@@ -101,7 +101,7 @@ zstyle ':completion:*:default' list-colors ${(s.:.)LSCOLORS}
 # if the kubectl command exists
 if command -v kubectl 1>/dev/null 2>&1; then
     # then setup Kubernetes config file variable
-    KUBECONFIG=/home/tjmcs/.kube/config
+    export KUBECONFIG=/home/tjmcs/.kube/config
     # setup autocompletion for the kubectl command
     source <(kubectl completion zsh)
 fi
