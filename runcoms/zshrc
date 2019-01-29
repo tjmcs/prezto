@@ -55,6 +55,10 @@ fi
 #alias set-iag-web-proxy='source ${HOME}/bin/set-iag-web-proxy.sh'
 #alias unset-iag-web-proxy='source ${HOME}/bin/unset-iag-web-proxy.sh'
 
+# alias to get a version tag from within a git repository
+alias git-version-tag="git describe --tags --dirty --always | sed -e 's@-@_@' | sed -e 's/^v//'"
+alias git-update-submodules='git pull --recurse-submodules && git submodule update' 
+
 # and change the color used to display directories to a more visible blue
 #
 #   Note that the LSCOLORS value shown below is encoded using a scheme where
@@ -107,3 +111,7 @@ if command -v kubectl 1>/dev/null 2>&1; then
     # setup autocompletion for the kubectl command
     source <(kubectl completion zsh)
 fi
+
+# setup proxy via environment variables
+#export http_proxy="http://192.168.1.1:3128" && export https_proxy=${http_proxy}
+#export HTTP_PROXY="http://192.168.1.1:3129" && export HTTPS_PROXY=${HTTP_PROXY}
