@@ -57,7 +57,10 @@ fi
 
 # alias to get a version tag from within a git repository
 alias git-version-tag="git describe --tags --dirty --always | sed -e 's@-@_@' | sed -e 's/^v//'"
-alias git-update-submodules='git pull --recurse-submodules && git submodule update' 
+alias git-update-submodules='git pull --recurse-submodules && git submodule update --recursive --remote' 
+
+# alias to get the name of the default interface
+alias get-default-iface-name="ip r | egrep '^default' | awk '{ print \$5 }'"
 
 # and change the color used to display directories to a more visible blue
 #
@@ -103,6 +106,10 @@ LS_COLORS='rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:c
 # and ensure that the same color scheme is used for tab expansion listings
 #zstyle ':completion:*:default' list-colors ${(s.:.)LSCOLORS}
 zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
+
+# setup grep to colorize things in a way that's more readable in a window with
+# a dark background
+export GREP_COLORS='fn=01;34:ln=01;32:mt=01;35'
 
 # if the kubectl command exists
 if command -v kubectl 1>/dev/null 2>&1; then
