@@ -14,7 +14,7 @@ fi
 #export GOBIN=/usr/local/go/bin
 export GOPATH=${HOME}/src/go
 export SNAP_PATH=${HOME}/src/go/src/github.com/intelsdi-x/snap/build
-export PATH="${HOME}/bin:${GOPATH}/bin:/usr/local/bin:/usr/local/go/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin"
+export PATH="${HOME}/bin:${GOPATH}/bin:${HOME}/.cargo/bin:/usr/local/bin:/usr/local/go/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin"
 
 # add Anaconda binaries to the default path
 export ANACONDA_PATH=${HOME}/miniconda3
@@ -43,6 +43,9 @@ export PATH="$HOME/.rbenv/bin:$PATH"
 
 # Load rbenv automatically
 eval "$(rbenv init -)"
+
+# Load pyenv automatically
+eval "$(pyenv init -)"
 
 # and change the color used to display directories to a more visible blue
 #
