@@ -17,8 +17,8 @@ export SNAP_PATH=${HOME}/src/go/src/github.com/intelsdi-x/snap/build
 export PATH="${HOME}/bin:${GOPATH}/bin:${HOME}/.cargo/bin:/usr/local/bin:/usr/local/go/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin"
 
 # add Anaconda binaries to the default path
-export ANACONDA_PATH=${HOME}/miniconda3
-export PATH=${PATH}:${ANACONDA_PATH}/bin
+#export ANACONDA_PATH=${HOME}/miniconda3
+#export PATH=${PATH}:${ANACONDA_PATH}/bin
 
 # ack alias
 type -p ack > /dev/null && alias ack="ack --pager='less -R'"
@@ -29,6 +29,9 @@ alias dh='dirs -v'
 # alias python to run python3
 #alias python=python3
 #alias pip=pip3
+
+# add homebrew to path
+export PATH="/opt/homebrew/sbin:/opt/homebrew/bin:$PATH"
 
 # brew package update
 alias brew_fresh='brew update && brew upgrade --all; brew cleanup; brew cask cleanup; brew doctor'
