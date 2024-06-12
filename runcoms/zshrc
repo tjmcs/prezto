@@ -36,10 +36,10 @@ alias open='xdg-open'
 alias restart-cinnamon="${HOME}/bin/restart-cinnamon.sh"
 
 # initialize rbenv and pyenv (if the corresponding commands exist
-if command -v rbenv 1>/dev/null 2>&1; then
+if type -p rbenv 1>/dev/null 2>&1; then
     eval "$(rbenv init -)"
 fi
-if command -v pyenv 1>/dev/null 2>&1; then
+if type -p pyenv 1>/dev/null 2>&1; then
     eval "$(pyenv init -)"
 fi
 
