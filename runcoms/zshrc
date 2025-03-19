@@ -5,6 +5,11 @@
 #   Sorin Ionescu <sorin.ionescu@gmail.com>
 #
 
+# Source the system-wide /etc/zshrc file
+if [ -f /etc/zshrc ]; then
+    source /etc/zshrc
+fi
+
 # Source Prezto.
 if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
@@ -18,7 +23,7 @@ export RBENV_ROOT=${HOME}/.rbenv
 export ANACONDA_PATH=${HOME}/miniconda3
 export CARGO_HOME=${HOME}/.cargo
 export SNAP_PATH=${HOME}/src/go/src/github.com/intelsdi-x/snap/build
-export PATH="${HOME}/bin:${GOPATH}/bin:${PYENV_ROOT}/bin:${RBENV_ROOT}/bin:${ANACONDA_PATH}/bin:${CARGO_HOME}/bin:/usr/local/bin:/usr/local/go/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin"
+export PATH="${HOME}/bin:${GOPATH}/bin:${PYENV_ROOT}/bin:${RBENV_ROOT}/bin:${ANACONDA_PATH}/bin:${CARGO_HOME}/bin:${PATH}"
 
 # set the default editor to vi rather than nano
 export EDITOR=vi
